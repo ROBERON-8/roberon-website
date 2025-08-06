@@ -1,8 +1,6 @@
 import Image from "next/image";
 import HeroPage from "./components/HeroPage";
 import Navbar from "./components/Navbar";
-import Services from "./components/Services";
-import Testimonials from "./components/Testimonials";
 
 export default function Home() {
   return (
@@ -11,10 +9,7 @@ export default function Home() {
         <Navbar />
       </div>
       <HeroPage />
-      <div className=" w-full h-screen">
-        <Services />
-      </div>
-      <Testimonials />
+
     </main>
   );
 }
