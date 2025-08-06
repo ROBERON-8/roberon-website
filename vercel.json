@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "https://www.roberon.com/:path*",
+      "destination": "https://roberon.com/:path*",
+      "permanent": true
+    }
+  ]
+}
