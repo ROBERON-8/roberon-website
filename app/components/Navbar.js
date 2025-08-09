@@ -4,9 +4,11 @@ import { IoIosArrowDown } from "react-icons/io";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter(); // Initialize useRouter
 
   return (
     <nav className="bg-black w-full px-4 shadow-lg py-2 z-50">
@@ -20,7 +22,7 @@ export default function Navbar() {
 
         {/* Left Navigation (Desktop) */}
         <div className="hidden md:flex items-center justify-center gap-2">
-          <button className="bg-white text-black h-10 rounded-full font-medium w-24 border border-white text-sm">
+          <button className="bg-white text-black h-10 rounded-full font-medium w-24 border border-white text-sm" onClick={() => router.push('/home')}>
             Home
           </button>
           <button className="text-gray-300 rounded-full w-24 h-10 border border-white text-sm">

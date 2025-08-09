@@ -1,8 +1,7 @@
-"use client";
+'use client';
 import Image from "next/image";
-import { useState } from "react";
-import { FaAngleLeft } from "react-icons/fa6";
-import { FaAngleRight } from "react-icons/fa6";
+import { useState, useEffect } from "react";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 // Mock slide data
 const slides = [
@@ -34,6 +33,11 @@ const slides = [
 
 export default function Services() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const handlePrev = () => {
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
@@ -46,54 +50,100 @@ export default function Services() {
   const slide = slides[currentSlide];
 
   return (
-    <main
-      className="min-h-screen flex items-center justify-center bg-black"
-      style={{ fontFamily: "'Montserrat', sans-serif" }}
-    >
-      <div className="flex flex-row w-[90vw] max-w-6xl h-[75vh] shadow-lg rounded-2xl overflow-hidden bg-[#181818]">
-        {/* Image Section */}
-        <div className="flex-1 relative min-w-[350px] flex items-center justify-center bg-black">
-          <Image
-            src={slide.image}
-            alt={slide.heading}
-            fill
-            style={{ objectFit: "cover" }}
-            className="transition-all duration-500"
-            priority
-          />
-        </div>
-        {/* Content Section */}
-        <div className="flex-1 flex flex-col justify-center items-center relative px-12 py-10 bg-[#181818]">
-          {/* Prev Button */}
-          <button
-            onClick={handlePrev}
-            className="group absolute left-4 top-1/2 -translate-y-1/2 w-15 h-15 opacity-50 hover:opacity-100 flex items-center justify-center bg-[#222] rounded-full hover:bg-[#333] transition"
-            aria-label="Previous Slide"
-          >
-            <FaAngleLeft className="text-gray-500 group-hover:text-white" size={24}/>
-          </button>
-
-          {/* Content */}
-          <div className="max-w-xl text-white text-left">
-            <div className="text-lg mb-2 text-gray-300">{slide.subheading}</div>
-            <div className="text-5xl font-bold mb-6 text-red-600 leading-tight">
-              {slide.heading}
+    <section className="min-h-auto w-full bg-black py-8 px-4 sm:py-12 sm:px-6 lg:px-8">
+      <div className={`max-w-7xl mx-auto transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
+        {/* Main Container */}
+        <div className="flex flex-col lg:flex-row rounded-2xl overflow-hidden bg-[#181818] shadow-2xl">
+          {/* Image Section */}
+          <div className="w-full lg:w-1/2 relative">
+            <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full">
+              <Image
+                src={slide.image}
+                alt={slide.heading}
+                fill
+                className="object-cover transition-all duration-500"
+                priority
+              />
+              {/* Mobile Navigation Buttons */}
+              <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4 lg:hidden">
+                <button
+                  onClick={handlePrev}
+                  className="w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center transition"
+                  aria-label="Previous Slide"
+                >
+                  <FaAngleLeft className="text-white" size={20}/>
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center transition"
+                  aria-label="Next Slide"
+                >
+                  <FaAngleRight className="text-white" size={20}/>
+                </button>
+              </div>
             </div>
-            <div className="text-lg mb-8 text-gray-200">{slide.description}</div>
-            <button className="px-8 py-3 rounded-full bg-red-600 text-white font-semibold text-lg hover:bg-red-700 transition">
-              {slide.buttonText}
-            </button>
           </div>
-          {/* Next Button */}
-          <button
-            onClick={handleNext}
-            className="group absolute right-4 top-1/2 -translate-y-1/2 w-15 h-15 opacity-50 hover:opacity-100 flex items-center justify-center bg-[#222] rounded-full hover:bg-[#333] transition"
-            aria-label="Next Slide"
-          >
-            <FaAngleRight className="text-gray-500 group-hover:text-white" size={24}/>
-          </button>
+
+          {/* Content Section */}
+          <div className="w-full lg:w-1/2 relative">
+            <div className="p-6 sm:p-8 lg:p-12">
+              {/* Desktop Navigation Buttons */}
+              <div className="hidden lg:block">
+                <button
+                  onClick={handlePrev}
+                  className="group absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 opacity-50 hover:opacity-100 
+                           flex items-center justify-center bg-[#222] rounded-full hover:bg-[#333] transition"
+                  aria-label="Previous Slide"
+                >
+                  <FaAngleLeft className="text-gray-500 group-hover:text-white" size={24}/>
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="group absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 opacity-50 hover:opacity-100 
+                           flex items-center justify-center bg-[#222] rounded-full hover:bg-[#333] transition"
+                  aria-label="Next Slide"
+                >
+                  <FaAngleRight className="text-gray-500 group-hover:text-white" size={24}/>
+                </button>
+              </div>
+
+              {/* Content */}
+              <div className="text-center lg:text-left">
+                <p className="text-base sm:text-lg text-gray-300 mb-2">
+                  {slide.subheading}
+                </p>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-600 mb-4 sm:mb-6 leading-tight">
+                  {slide.heading}
+                </h2>
+                <p className="text-base sm:text-lg text-gray-200 mb-6 sm:mb-8">
+                  {slide.description}
+                </p>
+                <button className="px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-red-600 text-white 
+                                 font-semibold text-base sm:text-lg hover:bg-red-700 transition-colors
+                                 transform hover:scale-105 duration-200">
+                  {slide.buttonText}
+                </button>
+              </div>
+
+              {/* Slide Indicators */}
+              <div className="flex justify-center lg:justify-start mt-8 space-x-2">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      currentSlide === index ? 'w-6 bg-red-600' : 'bg-gray-600'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
