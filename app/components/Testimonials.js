@@ -47,7 +47,7 @@ export default function Testimonials() {
           {/* Left: Testimonials Grid */}
           <div className="w-full lg:w-3/5 p-6 sm:p-8 lg:p-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-red-600 mb-6 sm:mb-8">
-              What Our Customers Say
+              What Our <span className="text-white">Customers Say</span>
             </h2>
             
             {/* Testimonials Grid */}

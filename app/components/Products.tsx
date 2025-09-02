@@ -76,7 +76,7 @@ export default function Products() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-600 mb-4">
-            Our Solutions
+            <span className="text-white">Our</span> Solutions
           </h2>
           <p className="text-gray-300 text-lg">
             Precision-engineered components for every industry

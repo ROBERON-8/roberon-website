@@ -13,7 +13,7 @@ const Footer = () => {
           <div>
             <h2 className="text-red-600 text-2xl font-bold mb-6">Contact</h2>
             <div className="space-y-2">
-              <p></p>
+              <p>Email: info@roberon.com</p>
               <p>Tel: +91 9611331055</p>
             </div>
           </div>
@@ -33,17 +33,17 @@ const Footer = () => {
           <div>
             <h2 className="text-red-600 text-2xl font-bold mb-6">Follow</h2>
             <div className="flex space-x-4">
-              <Link href="https://www.instagram.com/roberon_technologies" target="_blank" 
+              <Link href="https://www.instagram.com/roberon_technologies?igsh=eGc2aHhtMjVtcG1u" target="_blank" 
                 className="text-white hover:text-red-600 transition-colors">
-                <FaInstagram size={24} />
+                <FaInstagram size={32} />
               </Link>
-              <Link href="https://twitter.com" target="_blank"
+              {/* <Link href="https://twitter.com" target="_blank"
                 className="text-white hover:text-red-600 transition-colors">
                 <FaXTwitter size={24} />
-              </Link>
-              <Link href="https://linkedin.com" target="_blank"
+              </Link> */}
+              <Link href="https://www.linkedin.com/company/roberon/" target="_blank"
                 className="text-white hover:text-red-600 transition-colors">
-                <FaLinkedin size={24} />
+                <FaLinkedin size={32} />
               </Link>
             </div>
           </div>

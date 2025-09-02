@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Mock slide data
 const slides = [
@@ -33,17 +34,15 @@ const slides = [
 
 export default function Services() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  const [direction, setDirection] = useState(0);
 
   const handlePrev = () => {
+    setDirection(-1);
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
+    setDirection(1);
     setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
@@ -51,21 +50,33 @@ export default function Services() {
 
   return (
     <section className="min-h-auto w-full bg-black py-8 px-4 sm:py-12 sm:px-6 lg:px-8">
-      <div className={`max-w-7xl mx-auto transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}>
+      <div className="max-w-7xl mx-auto">
         {/* Main Container */}
         <div className="flex flex-col lg:flex-row rounded-2xl overflow-hidden bg-[#181818] shadow-2xl">
+          
           {/* Image Section */}
           <div className="w-full lg:w-1/2 relative">
             <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full">
-              <Image
-                src={slide.image}
-                alt={slide.heading}
-                fill
-                className="object-cover transition-all duration-500"
-                priority
-              />
+              <AnimatePresence initial={false} custom={direction}>
+                <motion.div
+                  key={slide.image}
+                  custom={direction}
+                  initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
+                  transition={{ duration: 0.6 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={slide.image}
+                    alt={slide.heading}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
+
               {/* Mobile Navigation Buttons */}
               <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4 lg:hidden">
                 <button
@@ -89,6 +100,7 @@ export default function Services() {
           {/* Content Section */}
           <div className="w-full lg:w-1/2 relative">
             <div className="p-6 sm:p-8 lg:p-12">
+              
               {/* Desktop Navigation Buttons */}
               <div className="hidden lg:block">
                 <button
@@ -110,32 +122,45 @@ export default function Services() {
               </div>
 
               {/* Content */}
-              <div className="text-center lg:text-left">
-                <p className="text-base sm:text-lg text-gray-300 mb-2">
-                  {slide.subheading}
-                </p>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-600 mb-4 sm:mb-6 leading-tight">
-                  {slide.heading}
-                </h2>
-                <p className="text-base sm:text-lg text-gray-200 mb-6 sm:mb-8">
-                  {slide.description}
-                </p>
-                <button className="px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-red-600 text-white 
-                                 font-semibold text-base sm:text-lg hover:bg-red-700 transition-colors
-                                 transform hover:scale-105 duration-200">
-                  {slide.buttonText}
-                </button>
-              </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={slide.heading}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -40 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-center lg:text-left"
+                >
+                  <p className="text-base sm:text-lg text-gray-300 mb-2">
+                    {slide.subheading}
+                  </p>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-600 mb-4 sm:mb-6 leading-tight">
+                    {slide.heading}
+                  </h2>
+                  <p className="text-base sm:text-lg text-gray-200 mb-6 sm:mb-8">
+                    {slide.description}
+                  </p>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-red-600 text-white 
+                                 font-semibold text-base sm:text-lg hover:bg-red-700 transition-colors"
+                  >
+                    {slide.buttonText}
+                  </motion.button>
+                </motion.div>
+              </AnimatePresence>
 
               {/* Slide Indicators */}
               <div className="flex justify-center lg:justify-start mt-8 space-x-2">
                 {slides.map((_, index) => (
-                  <button
+                  <motion.button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       currentSlide === index ? 'w-6 bg-red-600' : 'bg-gray-600'
                     }`}
+                    whileHover={{ scale: 1.2 }}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
