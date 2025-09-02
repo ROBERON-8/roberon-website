@@ -1,7 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { IoIosArrowDown } from "react-icons/io";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { IoIosArrowRoundForward } from "react-icons/io";
 import { useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { useRouter, usePathname } from 'next/navigation'; // Import usePathname
@@ -128,6 +127,11 @@ export default function Navbar() {
             onClick={() => router.push('/blogs')}
           >
             Blogs
+          </button>
+          <button className='flex items-center justify-center w-full text-left text-white py-2' onClick={() => router.push('https://we-gift-3-d.vercel.app/')}>
+            <Image src='/wegift logo.png' alt='WeGift 3D logo' height={40} width={40} className='w-auto h-auto' />
+            <p className='text-md'>WeGift 3D</p>
+            <IoIosArrowRoundForward size={24}/>
           </button>
         </div>
       )}
