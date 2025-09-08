@@ -128,7 +128,7 @@ export default function Navbar() {
           >
             Blogs
           </button>
-          <button className='flex items-center justify-center w-full text-left text-white py-2' onClick={() => router.push('https://we-gift-3-d.vercel.app/')}>
+          <button className='flex items-center justify-center w-full text-left text-white py-2' onClick={() => window.location.href = 'https://we-gift-3-d.vercel.app/'}>
             <Image src='/wegift logo.png' alt='WeGift 3D logo' height={40} width={40} className='w-auto h-auto' />
             <p className='text-md'>WeGift 3D</p>
             <IoIosArrowRoundForward size={24}/>
