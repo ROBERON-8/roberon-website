@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // Mock slide data
 const slides = [
   {
-    image: "https://via.placeholder.com/600x400/333333/ffffff?text=Service+1", 
+    image: "/images/service1.jpg", 
     heading: "Printing Dreams, Future Themes",
     subheading: "Your Vision, Our Print",
     description:
@@ -15,7 +15,7 @@ const slides = [
     buttonText: "Know More",
   },
   {
-    image: "https://via.placeholder.com/600x400/444444/ffffff?text=Service+2",
+    image: "/images/service2.jpg",
     heading: "Innovative Prototyping Solutions",
     subheading: "Prototyping Redefined",
     description:

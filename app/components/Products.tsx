@@ -7,40 +7,40 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 // Product data
 const products = [
   {
-    title: "Industrial Components",
+    title: "Car 3D prints",
     description: "High-precision 3D printed mechanical parts for industrial applications",
-    image: "/images/industrial-parts.jpg",
-    link: "https://example.com/industrial",
+    image: "/products/car-img.jpg",
+    link: "/products/car-img.jpg",
   },
   {
-    title: "Aerospace Solutions",
+    title: "3D Heart",
     description: "Lightweight and durable components for aerospace industry",
-    image: "/images/aerospace-parts.jpg",
-    link: "https://example.com/aerospace",
+    image: "/products/heart-hm.jpg",
+    link: "/products/heart-hm.jpg",
   },
   {
-    title: "Custom Prototypes",
+    title: "Squid game inspired key chains",
     description: "Rapid prototyping services for mechanical engineering",
-    image: "/images/prototype-parts.jpg",
-    link: "https://example.com/prototypes",
+    image: "/products/key-chain.jpg",
+    link: "/products/key-chain.jpg",
   },
   {
-    title: "Precision Engineering",
+    title: "3D printed bike chain ring",
     description: "Complex geometries and tight tolerance components",
-    image: "/images/precision-parts.jpg",
-    link: "https://example.com/precision",
+    image: "/products/bike-chain.jpg",
+    link: "/products/bike-chain.jpg",
   },
   {
-    title: "Precision Engineering",
+    title: "Key rings",
     description: "Complex geometries and tight tolerance components",
-    image: "/images/precision-parts.jpg",
-    link: "https://example.com/precision",
+    image: "/products/key-ring.jpg",
+    link: "/products/key-ring.jpg",
   },
   {
-    title: "Precision Engineering",
+    title: "3D printed F1 tyre key ring",
     description: "Complex geometries and tight tolerance components",
-    image: "/images/precision-parts.jpg",
-    link: "https://example.com/precision",
+    image: "/products/f1-tyre.jpg",
+    link: "/products/f1-tyre.jpg",
   }
 ];
 
@@ -76,10 +76,10 @@ export default function Products() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-600 mb-4">
-            <span className="text-white">Our</span> Solutions
+            <span className="text-white">Our</span> Products
           </h2>
           <p className="text-gray-300 text-lg">
-            Precision-engineered components for every industry
+            Discover our range of 3D-printed products engineered for precision, durability, and innovation across industries.
           </p>
         </div>
 
@@ -116,7 +116,7 @@ export default function Products() {
           >
             {products.map((product, index) => (
               <Link 
-                href={product.link}
+                href='https://we-gift-3-d.vercel.app/'
                 target="_blank"
                 rel="noopener noreferrer"
                 key={index}
@@ -127,7 +127,7 @@ export default function Products() {
                               transform hover:scale-105 hover:shadow-2xl
                               hover:shadow-red-600/20 h-full">
                   {/* Image Container */}
-                  <div className={`relative ${index < 0 ? 'aspect-[4/3]' : 'aspect-square'}`}>
+                  <div className={`relative overflow-hidden ${index < 0 ? 'aspect-[4/3]' : 'aspect-square'}`}>
                     <Image
                       src={product.image}
                       alt={product.title}
