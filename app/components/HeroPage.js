@@ -4,10 +4,18 @@ import Image from 'next/image';
 import { IoArrowForwardSharp } from "react-icons/io5";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const HeroPage = () => {
   const pathname = usePathname();
+  const router = useRouter();
 
+    useEffect(() => {
+    if (pathname === "/") {
+      router.push("/home");
+    }
+  }, [pathname, router]);
   const handleExploreClick = () => {
     const el = document.getElementById("services");
     if (el) el.scrollIntoView({ behavior: "smooth" });

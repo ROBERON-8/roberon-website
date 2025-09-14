@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 // Mock testimonial data
 const testimonials = [
   {
-    name: "Sarah W.",
+    name: "Robert W.",
     role: "Product Designer",
     comment: "Amazing quality and fast turnaround. The team was super helpful!",
     avatar: "/images/avatar1.jpg",
@@ -43,7 +43,7 @@ export default function Testimonials() {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}>
         {/* Main Container */}
-        <div className="flex flex-col lg:flex-row rounded-2xl overflow-hidden bg-[#181818]">
+        <div className="flex flex-col lg:flex-row rounded-2xl justify-center items-center overflow-hidden bg-[#181818]">
           {/* Left: Testimonials Grid */}
           <div className="w-full lg:w-3/5 p-6 sm:p-8 lg:p-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-red-600 mb-6 sm:mb-8">
@@ -91,10 +91,12 @@ export default function Testimonials() {
           {/* Right: Image Section */}
           <div className="w-full lg:w-2/5 relative min-h-[300px] lg:min-h-[600px]">
             <Image
-              src="/images/testimonials-right.jpg"
+              src="/images/collage.png"
               alt="Happy Customers"
-              fill
-              className="object-cover transition-transform duration-700 hover:scale-105"
+              width={1000}
+              height={800}
+              objectFit="cover"
+              className="object-cover transition-transform duration-700 hover:scale-105 "
               priority
             />
             {/* Overlay gradient */}

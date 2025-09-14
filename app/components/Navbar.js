@@ -57,14 +57,13 @@ export default function Navbar() {
         {/* Left Navigation (Desktop) */}
         <div className="hidden md:flex items-center justify-center gap-2">
           <button 
-            className={getButtonClasses('/home', 'h-10 rounded-full font-medium w-24 text-md hover:scale-110')}
+            className={getButtonClasses('/home', 'h-10 rounded-full font-medium w-24 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
             onClick={() => router.push('/home')}
           >
             Home
           </button>
           <button 
-            className="text-gray-300 rounded-full w-24 h-10 border border-white text-md hover:scale-110 flex items-center justify-center gap-1" 
-            onClick={handleBrands}
+            className="text-gray-300 rounded-full w-24 h-10 border border-white text-md hover:scale-110 flex items-center justify-center gap-1 transition-all duration-300 ease-in-out" onClick={handleBrands}
           >
             Brands
           </button>
@@ -84,13 +83,13 @@ export default function Navbar() {
         {/* Right Navigation (Desktop) */}
         <div className="hidden md:flex items-center justify-center gap-2">
           <button 
-            className={getButtonClasses('/events', 'rounded-full w-24 h-10 text-md hover:scale-110')}
+            className={getButtonClasses('/events', 'rounded-full w-24 h-10 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
             onClick={() => router.push('/events')}
           >
             Events
           </button>
           <button 
-            className={getButtonClasses('/blogs', 'h-10 rounded-full flex items-center justify-center gap-1 w-28 text-md hover:scale-110')}
+            className={getButtonClasses('/blogs', 'h-10 rounded-full flex items-center justify-center gap-1 w-28 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
             onClick={() => router.push('/blogs')}
           >
             Blogs
