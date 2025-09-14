@@ -28,7 +28,7 @@ const HeroPage = () => {
 
   return (
     <main>
-      <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+      <div className="relative w-full h-screen -z-10 flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <Image
           src="/images/Home.jpg"

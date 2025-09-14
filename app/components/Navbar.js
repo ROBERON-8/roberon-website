@@ -45,7 +45,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-black w-full pl-4 shadow-lg py-2 z-50">
+    <nav className="bg-black w-full pl-4 shadow-lg py-2 z-50 fixed top-0 left-0">
       <div className="max-w-[1400px] w-full mx-auto flex items-center justify-between h-14">
         {/* Mobile Hamburger */}
         <div className="md:hidden flex items-center">

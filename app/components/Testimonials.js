@@ -39,29 +39,42 @@ export default function Testimonials() {
 
   return (
     <section className="w-full bg-black py-16 px-4 sm:px-6 lg:px-8">
-      <div className={`max-w-7xl mx-auto transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}>
+      <div className="max-w-7xl mx-auto">
         {/* Main Container */}
-        <div className="flex flex-col lg:flex-row rounded-2xl justify-center items-center overflow-hidden bg-[#181818]">
+        <div
+          className={`flex flex-col lg:flex-row rounded-2xl justify-center items-center overflow-hidden bg-[#181818] transition-all duration-1000 ${
+            isVisible
+              ? "opacity-100 translate-y-0 scale-100"
+              : "opacity-0 translate-y-10 scale-95"
+          }`}
+        >
           {/* Left: Testimonials Grid */}
           <div className="w-full lg:w-3/5 p-6 sm:p-8 lg:p-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-red-600 mb-6 sm:mb-8">
+            <h2
+              className={`text-2xl sm:text-4xl font-bold text-red-600 mb-6 sm:mb-8 transition-all duration-1000 ${
+                isVisible
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-10"
+              }`}
+            >
               What Our <span className="text-white">Customers Say</span>
             </h2>
-            
+
             {/* Testimonials Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="bg-[#222] rounded-xl p-4 sm:p-5 hover:bg-[#2a2a2a] transition-all duration-300 
-                           transform hover:-translate-y-1 hover:shadow-xl"
+                  className={`bg-[#222] rounded-xl p-4 sm:p-5 transition-all duration-700 transform hover:-translate-y-1 hover:shadow-xl hover:bg-[#2a2a2a] ${
+                    isVisible
+                      ? "opacity-100 translate-y-0 scale-100"
+                      : "opacity-0 translate-y-5 scale-95"
+                  }`}
+                  style={{ transitionDelay: `${index * 200}ms` }} // staggered entry
                 >
                   {/* Profile Section */}
                   <div className="flex items-center mb-3 space-x-3">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden bg-gray-700 
-                                  border border-[#333] flex-shrink-0">
+                    <div className="relative w-10 h-10 rounded-full overflow-hidden bg-gray-700 border border-[#333] flex-shrink-0">
                       <Image
                         src={testimonial.avatar}
                         alt={testimonial.name}
@@ -78,7 +91,7 @@ export default function Testimonials() {
                       </p>
                     </div>
                   </div>
-                  
+
                   {/* Comment */}
                   <blockquote className="text-gray-200 text-sm sm:text-base italic leading-relaxed">
                     &ldquo;{testimonial.comment}&rdquo;
@@ -89,19 +102,23 @@ export default function Testimonials() {
           </div>
 
           {/* Right: Image Section */}
-          <div className="w-full lg:w-2/5 relative min-h-[300px] lg:min-h-[600px]">
+          <div
+            className={`w-full lg:w-2/5 relative min-h-[300px] lg:min-h-[600px] transition-all duration-1000 ${
+              isVisible
+                ? "opacity-100 translate-x-0 scale-100"
+                : "opacity-0 translate-x-10 scale-95"
+            }`}
+          >
             <Image
               src="/images/collage.png"
               alt="Happy Customers"
               width={1000}
               height={800}
-              objectFit="cover"
-              className="object-cover transition-transform duration-700 hover:scale-105 "
+              className="object-cover transition-transform duration-700 hover:scale-105"
               priority
             />
             {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#181818] via-transparent to-transparent 
-                          opacity-50 lg:opacity-30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#181818] via-transparent to-transparent opacity-50 lg:opacity-30" />
           </div>
         </div>
       </div>
