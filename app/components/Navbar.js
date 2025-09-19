@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { useRouter, usePathname } from 'next/navigation'; // Import usePathname
 
@@ -9,6 +9,26 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname(); // Get current pathname
+  const navRef = useRef(null);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target) && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+
+    // Add event listener when menu is open
+    if (menuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Cleanup event listener
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen]);
 
   const handleBrands = () => {
     if (pathname !== "/home") {
@@ -45,8 +65,8 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-black w-full pl-4 shadow-lg py-2 z-50 fixed top-0 left-0">
-      <div className="max-w-[1400px] w-full mx-auto flex items-center justify-between h-14">
+    <nav ref={navRef} className="bg-black w-full shadow-lg py-2 z-50 fixed top-0 left-0 right-0">
+      <div className="max-w-[1400px] w-full mx-auto flex items-center justify-between h-14 px-4">
         {/* Mobile Hamburger */}
         <div className="md:hidden flex items-center">
           <button onClick={() => setMenuOpen(!menuOpen)} className="text-white">
@@ -69,18 +89,18 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Center Logo */}
-        <div className="flex justify-center items-center">
+        {/* Center Logo (Desktop) / Right Logo (Mobile) */}
+        <div className="flex justify-center items-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
           <Image
             src="/Roberon Logo.jpg"
             alt="Logo"
-            width={150}
-            height={40}
-            className="object-contain h-10 w-auto"
+            width={120}
+            height={32}
+            className="object-contain h-8 w-auto"
           />
         </div>
 
-        {/* Right Navigation (Desktop) */}
+        {/* Right Navigation (Desktop only) */}
         <div className="hidden md:flex items-center justify-center gap-2">
           <button 
             className={getButtonClasses('/events', 'rounded-full w-24 h-10 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
@@ -94,7 +114,7 @@ export default function Navbar() {
           >
             Blogs
           </button>
-          <div className="bg-slate-800 w-12 h-10 rounded-full border border-r-0 border-white flex items-center justify-center  top-4 right-0 z-50 rounded-l-full rounded-r-none shadow-lg hover:scale-105 transition-transform" onClick={() => router.push('https://we-gift-3-d.vercel.app/')}>
+          <div className="bg-slate-800 w-12 h-10 rounded-full border border-r-0 border-white flex items-center justify-center top-4 right-0 z-50 rounded-l-full rounded-r-none shadow-lg hover:scale-105 transition-transform cursor-pointer" onClick={() => router.push('https://we-gift-3-d.vercel.app/')}>
             <Image src='/wegift logo.png' alt='WeGift 3D logo' height={100} width={100} className='w-auto h-auto' />
           </div>
         </div>
@@ -102,36 +122,56 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden mt-4 space-y-2 flex flex-col items-start px-2 z-20">
-          <button 
-            className={getMobileButtonClasses('/home')} 
-            onClick={() => router.push('/home')}
-          >
-            Home
-          </button>
-          <button 
-            className="w-full text-left text-white border-b border-gray-600 py-2" 
-            onClick={handleBrands}
-          >
-            Brands
-          </button>
-          <button 
-            className={getMobileButtonClasses('/events')} 
-            onClick={() => router.push('/events')}
-          >
-            Events
-          </button>
-          <button 
-            className={getMobileButtonClasses('/blogs')} 
-            onClick={() => router.push('/blogs')}
-          >
-            Blogs
-          </button>
-          <button className='flex items-center justify-center w-full text-left text-white py-2' onClick={() => window.location.href = 'https://we-gift-3-d.vercel.app/'}>
-            <Image src='/wegift logo.png' alt='WeGift 3D logo' height={40} width={40} className='w-auto h-auto' />
-            <p className='text-md'>WeGift 3D</p>
-            <IoIosArrowRoundForward size={24}/>
-          </button>
+        <div className="md:hidden bg-black w-full left-0 right-0 border-t border-gray-700">
+          <div className="max-w-[1400px] mx-auto px-4 py-4 space-y-2 flex flex-col items-start">
+            <button 
+              className={getMobileButtonClasses('/home')} 
+              onClick={() => {
+                router.push('/home');
+                setMenuOpen(false);
+              }}
+            >
+              Home
+            </button>
+            <button 
+              className="w-full text-left text-white border-b border-gray-600 py-2" 
+              onClick={() => {
+                handleBrands();
+                setMenuOpen(false);
+              }}
+            >
+              Brands
+            </button>
+            <button 
+              className={getMobileButtonClasses('/events')} 
+              onClick={() => {
+                router.push('/events');
+                setMenuOpen(false);
+              }}
+            >
+              Events
+            </button>
+            <button 
+              className={getMobileButtonClasses('/blogs')} 
+              onClick={() => {
+                router.push('/blogs');
+                setMenuOpen(false);
+              }}
+            >
+              Blogs
+            </button>
+            <button 
+              className='flex items-center justify-start w-full text-left text-white py-2 gap-2' 
+              onClick={() => {
+                window.location.href = 'https://we-gift-3-d.vercel.app/';
+                setMenuOpen(false);
+              }}
+            >
+              <Image src='/wegift logo.png' alt='WeGift 3D logo' height={32} width={32} className='w-8 h-8 object-contain' />
+              <p className='text-md'>WeGift 3D</p>
+              <IoIosArrowRoundForward size={24}/>
+            </button>
+          </div>
         </div>
       )}
     </nav>
