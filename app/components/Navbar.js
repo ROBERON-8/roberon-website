@@ -65,8 +65,8 @@ export default function Navbar() {
   }
 
   return (
-    <nav ref={navRef} className="bg-black w-full shadow-lg py-2 z-50 fixed top-0 left-0 right-0">
-      <div className="max-w-[1400px] w-full mx-auto flex items-center justify-between h-14 px-4">
+    <nav ref={navRef} className="bg-black w-full shadow-lg py-2 z-50 fixed top-0 left-0 right-0 ">
+      <div className="max-w-[1400px] w-full mx-auto flex items-center justify-between h-14 px-4 ">
         {/* Mobile Hamburger */}
         <div className="md:hidden flex items-center">
           <button onClick={() => setMenuOpen(!menuOpen)} className="text-white">
@@ -114,7 +114,7 @@ export default function Navbar() {
           >
             Blogs
           </button>
-          <div className="bg-slate-800 cursor-target w-12 h-10 rounded-full border border-white flex items-center justify-center top-4 right-0 z-50 rounded-none shadow-lg hover:scale-105 transition-transform" onClick={() => router.push('https://we-gift-3-d.vercel.app/')}>
+          <div className="bg-slate-800 cursor-target w-12 h-10 rounded-full border border-white flex items-center justify-center top-4 right-0 z-50  shadow-lg hover:scale-105 transition-transform" onClick={() => router.push('https://we-gift-3-d.vercel.app/')}>
             <Image src='/wegift logo.png' alt='WeGift 3D logo' height={100} width={100} className='w-auto h-auto' />
           </div>
         </div>

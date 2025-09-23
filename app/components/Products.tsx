@@ -187,8 +187,6 @@
 
 
 'use client';
-import Image from "next/image";
-import Link from "next/link";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
@@ -252,7 +250,7 @@ export default function Products() {
 
           {/* Main Icon */}
           <motion.div
-            className="relative mb-8 z-10"
+            className="relative mb-8 "
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
@@ -286,7 +284,7 @@ export default function Products() {
 
           {/* Text Content */}
           <motion.div
-            className="text-center relative z-10"
+            className="text-center relative"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.8 }}
