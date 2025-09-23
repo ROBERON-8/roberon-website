@@ -1,158 +1,165 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
-
-const liveEvent = {
-    title: 'Robotics Workshop 2024',
-    date: 'June 15, 2024',
-    description: 'Join us for a hands-on robotics workshop. Learn, build, and compete!',
-    image: '/images/live-event.jpg',
-    status: 'LIVE NOW'
-};
-
-const pastEvents = [
-    {
-        title: 'AI Seminar',
-        date: 'May 10, 2024',
-        image: '/images/ai-seminar.jpg',
-        attendees: '250+'
-    },
-    {
-        title: 'Drone Racing',
-        date: 'April 20, 2024',
-        image: '/images/drone-racing.jpg',
-        attendees: '180+'
-    },
-    {
-        title: 'Tech Talk',
-        date: 'March 5, 2024',
-        image: '/images/tech-talk.jpg',
-        attendees: '320+'
-    },
-];
+import { motion } from 'framer-motion';
+import TextPressure from '../components/TextPressure';
 
 export default function Events() {
-    return ( 
-        <div className="min-h-screen bg-black text-white">
-            <Navbar />
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-                
-                {/* Page Header */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                        <span className="text-white">Our </span>
-                        <span className="text-red-500">Events</span>
-                    </h1>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        Discover upcoming workshops and explore our exciting past events
-                    </p>
+    const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        
+        const updateWindowSize = () => {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        };
+
+        // Set initial size
+        updateWindowSize();
+
+        // Add event listener for window resize
+        window.addEventListener('resize', updateWindowSize);
+
+        // Cleanup
+        return () => window.removeEventListener('resize', updateWindowSize);
+    }, []);
+
+    // Don't render particles until component is mounted on client
+    if (!mounted) {
+        return (
+            <div className="min-h-screen bg-black text-white relative overflow-hidden">
+                <Navbar />
+                <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6">
+                    <div className="text-center max-w-4xl mx-auto">
+                        <div className="text-5xl md:text-7xl font-bold mb-4 text-white">
+                            Loading...
+                        </div>
+                    </div>
                 </div>
+            </div>
+        );
+    }
+    
+    return (
+        <div className="min-h-screen bg-black text-white relative overflow-hidden">
+            <Navbar />
+            
+            {/* Background Effects */}
+            <div className="absolute inset-0 z-0">
+                {/* Animated grid */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse"></div>
+                
+                {/* Floating particles */}
+                <div className="absolute inset-0">
+                    {[...Array(20)].map((_, i) => (
+                        <motion.div
+                            key={i}
+                            className="absolute w-1 h-1 bg-red-500 rounded-full opacity-60"
+                            initial={{ 
+                                x: Math.random() * windowSize.width, 
+                                y: windowSize.height + 10,
+                                opacity: 0 
+                            }}
+                            animate={{ 
+                                y: -10, 
+                                opacity: [0, 1, 1, 0],
+                                scale: [1, 1.5, 1]
+                            }}
+                            transition={{ 
+                                duration: 8 + Math.random() * 4, 
+                                repeat: Infinity,
+                                delay: i * 0.5,
+                                ease: "easeInOut"
+                            }}
+                        />
+                    ))}
+                </div>
+            </div>
 
-                {/* Live Event Section */}
-                <section className="mb-20">
-                    <div className="flex items-center gap-3 mb-8">
-                        <h2 className="text-2xl font-bold text-red-500">Live Event</h2>
-                        <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-                            <span className="text-red-400 text-sm font-medium">{liveEvent.status}</span>
-                        </div>
-                    </div>
+            {/* Main Content */}
+            <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6">
+                <div className="text-center max-w-4xl mx-auto">
                     
-                    <div className="relative bg-gradient-to-r from-red-900/20 to-red-600/20 border border-red-500/30 rounded-2xl p-8 backdrop-blur-sm">
-                        {/* Glow Effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-transparent rounded-2xl"></div>
-                        
-                        <div className="relative flex flex-col lg:flex-row items-center gap-8">
-                            {/* Image Placeholder */}
-                            <div className="flex-shrink-0">
-                                <div className="w-64 h-40 bg-gradient-to-br from-red-600 to-red-800 rounded-xl flex items-center justify-center relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-black/20"></div>
-                                    <div className="relative text-white text-center">
-                                        <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-2">
-                                            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                            </svg>
-                                        </div>
-                                        <p className="text-sm font-medium">Live Event</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            {/* Content */}
-                            <div className="flex-1 text-center lg:text-left">
-                                <h3 className="text-3xl font-bold text-white mb-3">
-                                    {liveEvent.title}
-                                </h3>
-                                <div className="flex items-center gap-2 justify-center lg:justify-start mb-4">
-                                    <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
-                                    <span className="text-red-400 font-semibold text-lg">{liveEvent.date}</span>
-                                </div>
-                                <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-                                    {liveEvent.description}
-                                </p>
-                                <button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors shadow-lg hover:shadow-red-500/25">
-                                    Join Live Event
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Past Events Section */}
-                <section>
-                    <h2 className="text-2xl font-bold text-white mb-8">Past Events</h2>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {pastEvents.map((event, idx) => (
-                            <div 
-                                key={idx} 
-                                className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden hover:border-gray-700 transition-all duration-300 group hover:transform hover:scale-105"
+                    {/* Robot/Gear Icon */}
+                    <motion.div 
+                        className="mb-8"
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                    >
+                        <div className="relative w-32 h-32 mx-auto">
+                            <motion.div 
+                                className="w-full h-full border-4 border-red-500 rounded-full flex items-center justify-center"
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                             >
-                                {/* Image Placeholder */}
-                                <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                                    <div className="relative text-center">
-                                        <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-2">
-                                            <svg className="w-8 h-8 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                                            </svg>
-                                        </div>
-                                        <p className="text-gray-300 text-sm">Event</p>
-                                    </div>
-                                    
-                                    {/* Attendees Badge */}
-                                    <div className="absolute top-4 right-4 bg-red-500/90 text-white text-xs font-semibold px-2 py-1 rounded-full">
-                                        {event.attendees} attendees
-                                    </div>
-                                </div>
-                                
-                                {/* Content */}
-                                <div className="p-6">
-                                    <h4 className="text-xl font-semibold text-white mb-2 group-hover:text-red-400 transition-colors">
-                                        {event.title}
-                                    </h4>
-                                    <div className="flex items-center gap-2 mb-4">
-                                        <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                        </svg>
-                                        <span className="text-gray-400 text-sm">{event.date}</span>
-                                    </div>
-                                    
-                                    {/* Action Buttons */}
-                                    <div className="flex gap-2">
-                                        <button className="flex-1 bg-gray-800 hover:bg-gray-700 text-white text-sm py-2 px-4 rounded-lg transition-colors">
-                                            View Details
-                                        </button>
-                                        <button className="bg-red-600 hover:bg-red-700 text-white text-sm py-2 px-4 rounded-lg transition-colors">
-                                            Gallery
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
+                                <svg className="w-16 h-16 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+                                </svg>
+                            </motion.div>
+                            
+                            {/* Orbiting dots */}
+                            <motion.div 
+                                className="absolute top-0 left-1/2 w-2 h-2 bg-red-400 rounded-full -translate-x-1/2"
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                                style={{ transformOrigin: '50% 64px' }}
+                            />
+                            <motion.div 
+                                className="absolute bottom-0 left-1/2 w-2 h-2 bg-blue-400 rounded-full -translate-x-1/2"
+                                animate={{ rotate: -360 }}
+                                transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+                                style={{ transformOrigin: '50% -64px' }}
+                            />
+                        </div>
+                    </motion.div>
+
+                    {/* Main Heading */}
+                    <motion.div
+                        initial={{ y: 50, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.5 }}
+                    >
+                        <h1 className="text-5xl md:text-7xl font-bold mb-4">
+                            <TextPressure
+                                text="WE ARE"
+                                flex={true}
+                                alpha={false}
+                                stroke={false}
+                                width={true}
+                                weight={true}
+                                italic={true}
+                                textColor="#ffffff"
+                                strokeColor="#ff0000"
+                                minFontSize={36}
+                            />
+                            <TextPressure
+                                text="COMING SOON"
+                                flex={true}
+                                alpha={false}
+                                stroke={false}
+                                width={true}
+                                weight={true}
+                                italic={true}
+                                textColor="red"
+                                strokeColor="#ff0000"
+                                minFontSize={36}
+                            />
+                        </h1>
+                        <p className="text-xl md:text-2xl text-gray-400 mb-4">
+                            Something Amazing is Being Built
+                        </p>
+                        <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                             Our events section is under construction. Get ready for exciting robotics workshops, 
+                            AI seminars, drone racing competitions, and much more!
+                        </p>
+                    </motion.div>
+
+                </div>
             </div>
         </div>
     );

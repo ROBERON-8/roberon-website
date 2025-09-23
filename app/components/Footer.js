@@ -34,7 +34,7 @@ const Footer = () => {
             <h2 className="text-red-600 text-2xl font-bold mb-6">Follow</h2>
             <div className="flex space-x-4">
               <Link href="https://www.instagram.com/roberon_technologies?igsh=eGc2aHhtMjVtcG1u" target="_blank" 
-                className="text-white hover:text-red-600 transition-colors">
+                className="text-white hover:text-red-600 transition-colors cursor-target">
                 <FaInstagram size={32} />
               </Link>
               {/* <Link href="https://twitter.com" target="_blank"
@@ -42,7 +42,7 @@ const Footer = () => {
                 <FaXTwitter size={24} />
               </Link> */}
               <Link href="https://www.linkedin.com/company/roberon/" target="_blank"
-                className="text-white hover:text-red-600 transition-colors">
+                className="text-white hover:text-red-600 transition-colors cursor-target">
                 <FaLinkedin size={32} />
               </Link>
             </div>

@@ -92,14 +92,14 @@ export default function Services() {
               <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4 lg:hidden">
                 <button
                   onClick={handlePrev}
-                  className="w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center transition"
+                  className="w-10 h-10 rounded-full cursor-target bg-black/50 hover:bg-black/70 flex items-center justify-center transition"
                   aria-label="Previous Slide"
                 >
                   <FaAngleLeft className="text-white" size={20}/>
                 </button>
                 <button
                   onClick={handleNext}
-                  className="w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center transition"
+                  className="w-10 h-10 rounded-full cursor-target bg-black/50 hover:bg-black/70 flex items-center justify-center transition"
                   aria-label="Next Slide"
                 >
                   <FaAngleRight className="text-white" size={20}/>
@@ -117,7 +117,7 @@ export default function Services() {
                 <button
                   onClick={handlePrev}
                   className="group absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 opacity-50 hover:opacity-100 
-                           flex items-center justify-center bg-[#222] rounded-full hover:bg-[#333] transition"
+                           flex items-center justify-center cursor-target bg-[#222] rounded-full hover:bg-[#333] transition"
                   aria-label="Previous Slide"
                 >
                   <FaAngleLeft className="text-gray-500 group-hover:text-white" size={24}/>
@@ -125,7 +125,7 @@ export default function Services() {
                 <button
                   onClick={handleNext}
                   className="group absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 opacity-50 hover:opacity-100 
-                           flex items-center justify-center bg-[#222] rounded-full hover:bg-[#333] transition"
+                           flex items-center justify-center cursor-target bg-[#222] rounded-full hover:bg-[#333] transition"
                   aria-label="Next Slide"
                 >
                   <FaAngleRight className="text-gray-500 group-hover:text-white" size={24}/>
@@ -168,7 +168,7 @@ export default function Services() {
                     whileHover={{ scale: 1.1, boxShadow: "0px 0px 15px rgba(239,68,68,0.7)" }}
                     whileTap={{ scale: 0.95 }}
                     className="px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-red-600 text-white 
-                                 font-semibold text-base sm:text-lg hover:bg-red-700 transition-colors"
+                                 font-semibold text-base sm:text-lg hover:bg-red-700 transition-colors cursor-target"
                   >
                     {slide.buttonText}
                   </motion.button>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import TargetCursor from "./components/TargetCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +25,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Outfit:wght@100&display=swap" rel="stylesheet"></link>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <TargetCursor 
+        spinDuration={2}
+        hideDefaultCursor={true}
+        />
         {children}
       </body>
     </html>

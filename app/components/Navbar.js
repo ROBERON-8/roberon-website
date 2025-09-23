@@ -53,7 +53,7 @@ export default function Navbar() {
     if (isActive(route)) {
       return `${baseClasses} bg-white text-black`;
     }
-    return `${baseClasses} text-gray-300 border border-white`;
+    return `${baseClasses} text-gray-300 `;
   }
 
   // Mobile button classes
@@ -77,13 +77,13 @@ export default function Navbar() {
         {/* Left Navigation (Desktop) */}
         <div className="hidden md:flex items-center justify-center gap-2">
           <button 
-            className={getButtonClasses('/home', 'h-10 rounded-full font-medium w-24 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
+            className={getButtonClasses('/home', 'h-10 rounded-full cursor-target font-medium w-24 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
             onClick={() => router.push('/home')}
           >
             Home
           </button>
           <button 
-            className="text-gray-300 rounded-full w-24 h-10 border border-white text-md hover:scale-110 flex items-center justify-center gap-1 transition-all duration-300 ease-in-out" onClick={handleBrands}
+            className="text-gray-300 rounded-full w-24 h-10 cursor-target text-md hover:scale-110 flex items-center justify-center gap-1 transition-all duration-300 ease-in-out" onClick={handleBrands}
           >
             Brands
           </button>
@@ -103,18 +103,18 @@ export default function Navbar() {
         {/* Right Navigation (Desktop only) */}
         <div className="hidden md:flex items-center justify-center gap-2">
           <button 
-            className={getButtonClasses('/events', 'rounded-full w-24 h-10 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
+            className={getButtonClasses('/events', 'rounded-full cursor-target w-24 h-10 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
             onClick={() => router.push('/events')}
           >
             Events
           </button>
           <button 
-            className={getButtonClasses('/blogs', 'h-10 rounded-full flex items-center justify-center gap-1 w-28 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
+            className={getButtonClasses('/blogs', 'h-10 rounded-full cursor-target flex items-center justify-center gap-1 w-28 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
             onClick={() => router.push('/blogs')}
           >
             Blogs
           </button>
-          <div className="bg-slate-800 w-12 h-10 rounded-full border border-r-0 border-white flex items-center justify-center top-4 right-0 z-50 rounded-l-full rounded-r-none shadow-lg hover:scale-105 transition-transform cursor-pointer" onClick={() => router.push('https://we-gift-3-d.vercel.app/')}>
+          <div className="bg-slate-800 cursor-target w-12 h-10 rounded-full border border-white flex items-center justify-center top-4 right-0 z-50 rounded-none shadow-lg hover:scale-105 transition-transform" onClick={() => router.push('https://we-gift-3-d.vercel.app/')}>
             <Image src='/wegift logo.png' alt='WeGift 3D logo' height={100} width={100} className='w-auto h-auto' />
           </div>
         </div>
