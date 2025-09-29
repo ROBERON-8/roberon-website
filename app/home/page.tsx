@@ -5,10 +5,12 @@ import Footer from "../components/Footer";
 import Services from "../components/Services";
 import Products from "../components/Products";
 // import Brands from "../components/Brands";
+import Team from "../components/Team";
+
 export default function HomePage() {
   return (
     <main className="relative z-10">
-      <div className="absolute top-0 left-0 w-full z-10 ">
+      <div className="absolute top-0 left-0 w-full z-50 ">
         <Navbar />
       </div>
       <section id='hero' className="relative w-full -z-10">
@@ -20,8 +22,11 @@ export default function HomePage() {
       {/* <section id='brands'>
         <Brands />
       </section> */}
-      <section id='products'>
+      <section id='products' className="-z-50">
         <Products />
+      </section>
+      <section id="teams"  className="-z-50">
+        <Team />
       </section>
         <Footer />
     </main>

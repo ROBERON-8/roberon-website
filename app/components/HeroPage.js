@@ -1,15 +1,12 @@
 'use client';
-
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { IoArrowForwardSharp } from "react-icons/io5";
 import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 const HeroPage = () => {
   const pathname = usePathname();
   const router = useRouter();
-  
   // Amoeba effect refs and state
   const containerRef = useRef(null);
   const svgRef = useRef(null);
@@ -20,7 +17,7 @@ const HeroPage = () => {
   const [displayText1, setDisplayText1] = useState('');
   const [displayText2, setDisplayText2] = useState('');
   const [showCursor1, setShowCursor1] = useState(true);
-  const [showCursor2, setShowCursor2] = useState(false);
+  const [showCursor2, setShowCursor2] = useState(true);
 
   const text1 = "We are your";
   const text2 = "makers of motion.";
@@ -150,18 +147,6 @@ const HeroPage = () => {
       }
     }, 800);
   };
-
-  // Scroll functions
-  const handleExploreClick = () => {
-    const el = document.getElementById("services");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleOurProductsClick = () => {
-    const el = document.getElementById("products");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div 
       className="relative w-full h-screen flex items-center justify-center overflow-hidden"
@@ -207,7 +192,7 @@ const HeroPage = () => {
             initial={{ x: -200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
-            className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold julius-sans-one-regular"
+            className={` text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold iceland-regular`}
           >
             {displayText1}
             {showCursor1 && (
@@ -235,7 +220,7 @@ const HeroPage = () => {
             initial={{ x: 200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
-            className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-right font-bold julius-sans-one-regular"
+            className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-right font-bold iceland-regular"
           >
             {displayText2}
             {showCursor2 && (
@@ -245,7 +230,7 @@ const HeroPage = () => {
         </div>
 
         {/* Bottom-left CTA section */}
-        <div className="absolute bottom-12 sm:bottom-20 left-0 px-4 sm:px-8 w-full sm:w-[30vw]">
+        {/* <div className="absolute bottom-12 sm:bottom-20 left-0 px-4 sm:px-8 w-full sm:w-[30vw]">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -282,7 +267,7 @@ const HeroPage = () => {
               Our Products <IoArrowForwardSharp className="ml-2" />
             </button>
           </motion.div>
-        </div>
+        </div> */}
       </div>
 
       {/* Ripple effects container */}

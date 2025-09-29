@@ -1,7 +1,6 @@
 'use client';
 import Image from "next/image";
-import { useState } from "react";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Mock slide data
@@ -34,17 +33,17 @@ const slides = [
 
 export default function Services() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [direction, setDirection] = useState(1);
 
-  const handlePrev = () => {
-    setDirection(-1);
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
+  // Auto-scroll functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDirection(1);
+      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 4000); // Change slide every 4 seconds
 
-  const handleNext = () => {
-    setDirection(1);
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
+    return () => clearInterval(interval);
+  }, []);
 
   const slide = slides[currentSlide];
 
@@ -87,51 +86,12 @@ export default function Services() {
                   />
                 </motion.div>
               </AnimatePresence>
-
-              {/* Mobile Navigation Buttons */}
-              <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4 lg:hidden">
-                <button
-                  onClick={handlePrev}
-                  className="w-10 h-10 rounded-full cursor-target bg-black/50 hover:bg-black/70 flex items-center justify-center transition"
-                  aria-label="Previous Slide"
-                >
-                  <FaAngleLeft className="text-white" size={20}/>
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="w-10 h-10 rounded-full cursor-target bg-black/50 hover:bg-black/70 flex items-center justify-center transition"
-                  aria-label="Next Slide"
-                >
-                  <FaAngleRight className="text-white" size={20}/>
-                </button>
-              </div>
             </div>
           </div>
 
           {/* Content Section */}
           <div className="w-full lg:w-1/2 relative">
             <div className="p-6 sm:p-8 lg:p-12">
-              
-              {/* Desktop Navigation Buttons */}
-              <div className="hidden lg:block">
-                <button
-                  onClick={handlePrev}
-                  className="group absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 opacity-50 hover:opacity-100 
-                           flex items-center justify-center cursor-target bg-[#222] rounded-full hover:bg-[#333] transition"
-                  aria-label="Previous Slide"
-                >
-                  <FaAngleLeft className="text-gray-500 group-hover:text-white" size={24}/>
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="group absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 opacity-50 hover:opacity-100 
-                           flex items-center justify-center cursor-target bg-[#222] rounded-full hover:bg-[#333] transition"
-                  aria-label="Next Slide"
-                >
-                  <FaAngleRight className="text-gray-500 group-hover:text-white" size={24}/>
-                </button>
-              </div>
-
               {/* Content */}
               <AnimatePresence mode="wait">
                 <motion.div

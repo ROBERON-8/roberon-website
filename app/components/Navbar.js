@@ -30,19 +30,6 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
-  const handleBrands = () => {
-    if (pathname !== "/home") {
-      // Navigate to /home and add a hash for the section
-      router.push("/home#brands");
-    } else {
-      // Already on /home, just scroll to section
-      const el = document.getElementById("brands");
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
   // Function to determine if a route is active
   const isActive = (route) => {
     return pathname === route;
@@ -55,6 +42,18 @@ export default function Navbar() {
     }
     return `${baseClasses} text-gray-300 `;
   }
+  const handleTeams = () => {
+  if (pathname !== "/home") {
+    // Navigate to /home and add a hash for the section
+    router.push("/home#teams");
+  } else {
+    // Already on /home, just scroll to section
+    const el = document.getElementById("teams");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+};
 
   // Mobile button classes
   const getMobileButtonClasses = (route) => {
@@ -83,16 +82,16 @@ export default function Navbar() {
             Home
           </button>
           <button 
-            className="text-gray-300 rounded-full w-24 h-10 cursor-target text-md hover:scale-110 flex items-center justify-center gap-1 transition-all duration-300 ease-in-out" onClick={handleBrands}
+            className="text-gray-300 rounded-full w-24 h-10 cursor-target text-md hover:scale-110 flex items-center justify-center gap-1 transition-all duration-300 ease-in-out" onClick={handleTeams}
           >
-            Brands
+            Team
           </button>
         </div>
 
         {/* Center Logo (Desktop) / Right Logo (Mobile) */}
         <div className="flex justify-center items-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
           <Image
-            src="/Roberon Logo.jpg"
+            src="/Roberon White SVG.svg"
             alt="Logo"
             width={120}
             height={32}
@@ -136,11 +135,11 @@ export default function Navbar() {
             <button 
               className="w-full text-left text-white border-b border-gray-600 py-2" 
               onClick={() => {
-                handleBrands();
+                handleTeams();
                 setMenuOpen(false);
               }}
             >
-              Brands
+              Team
             </button>
             <button 
               className={getMobileButtonClasses('/events')} 
