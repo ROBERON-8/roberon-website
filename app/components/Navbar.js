@@ -90,14 +90,9 @@ export default function Navbar() {
 
         {/* Center Logo (Desktop) / Right Logo (Mobile) */}
         <div className="flex justify-center items-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
-          <Image
-            src="/Roberon White SVG.svg"
-            alt="Logo"
-            width={120}
-            height={32}
-            className="object-contain h-8 w-auto"
-          />
+          <img src="../Roberon WHITE SVG.svg" alt="Logo" className="h-8 w-auto" />
         </div>
+
 
         {/* Right Navigation (Desktop only) */}
         <div className="hidden md:flex items-center justify-center gap-2">
