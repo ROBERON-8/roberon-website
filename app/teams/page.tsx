@@ -315,7 +315,7 @@ export default function TeamPage() {
                           href={member.social.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-10 h-10 bg-zinc-800/80 hover:bg-blue-600 text-zinc-400 hover:text-white rounded-lg flex items-center justify-center transition-all duration-300 border border-zinc-700/50 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20"
+                          className="w-10 h-10 bg-zinc-800/80 hover:bg-blue-600 text-zinc-400 hover:text-white rounded-lg flex items-center justify-center transition-all duration-300 border border-zinc-700/50 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20 cursor-target"
                         >
                             <FaLinkedin className="w-5 h-5" />
                         </Link>
@@ -325,7 +325,7 @@ export default function TeamPage() {
                           href={member.social.instagram}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-10 h-10 bg-zinc-800/80 hover:bg-zinc-700 text-zinc-400 hover:text-white rounded-lg flex items-center justify-center transition-all duration-300 border border-zinc-700/50 hover:border-zinc-600 hover:shadow-lg hover:shadow-zinc-500/20"
+                          className="w-10 h-10 bg-zinc-800/80 hover:bg-zinc-700 text-zinc-400 hover:text-white rounded-lg flex items-center justify-center transition-all duration-300 border border-zinc-700/50 hover:border-zinc-600 hover:shadow-lg hover:shadow-zinc-500/20 cursor-target"
                         >
                             <FaInstagram className="w-5 h-5" />
                         </Link>
@@ -435,7 +435,7 @@ export default function TeamPage() {
                         href={intern.social.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-8 h-8 bg-zinc-800/80 hover:bg-blue-600 text-zinc-400 hover:text-white rounded-lg flex items-center justify-center transition-all duration-300 border border-zinc-700/50 hover:border-blue-500/50"
+                        className="w-8 h-8 bg-zinc-800/80 hover:bg-blue-600 text-zinc-400 hover:text-white rounded-lg flex items-center justify-center transition-all duration-300 border border-zinc-700/50 hover:border-blue-500/50 cursor-target"
                       >
                         <FaLinkedin className="w-4 h-4" />
                       </Link>
@@ -445,7 +445,7 @@ export default function TeamPage() {
                         href={intern.social.instagram}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-8 h-8 bg-zinc-800/80 hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 text-zinc-400 hover:text-white rounded-lg flex items-center justify-center transition-all duration-300 border border-zinc-700/50 hover:border-pink-500/50"
+                        className="w-8 h-8 bg-zinc-800/80 hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 text-zinc-400 hover:text-white rounded-lg flex items-center justify-center transition-all duration-300 border border-zinc-700/50 hover:border-pink-500/50 cursor-target"
                       >
                         <FaInstagram className="w-4 h-4" />
                       </Link>
