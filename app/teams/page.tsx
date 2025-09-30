@@ -325,7 +325,7 @@ export default function TeamPage() {
                           href={member.social.instagram}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-10 h-10 bg-zinc-800/80 hover:bg-zinc-700 text-zinc-400 hover:text-white rounded-lg flex items-center justify-center transition-all duration-300 border border-zinc-700/50 hover:border-zinc-600 hover:shadow-lg hover:shadow-zinc-500/20 cursor-target"
+                          className="w-10 h-10 bg-zinc-800/80 hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 text-zinc-400 hover:text-white rounded-lg flex items-center justify-center transition-all duration-300 border border-zinc-700/50 hover:border-pink-500/50 cursor-target"
                         >
                             <FaInstagram className="w-5 h-5" />
                         </Link>
