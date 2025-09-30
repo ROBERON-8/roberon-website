@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 import Services from "../components/Services";
 import Products from "../components/Products";
 // import Brands from "../components/Brands";
-import Team from "../components/Team";
 
 export default function HomePage() {
   return (
@@ -24,9 +23,6 @@ export default function HomePage() {
       </section> */}
       <section id='products' className="-z-50">
         <Products />
-      </section>
-      <section id="teams"  className="-z-50">
-        <Team />
       </section>
         <Footer />
     </main>
