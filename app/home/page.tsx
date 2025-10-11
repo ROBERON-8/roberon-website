@@ -25,9 +25,6 @@ export default function HomePage() {
       <section id='products' className="-z-50">
         <Products />
       </section>
-      <section id="teams"  className="-z-50">
-        <Team />
-      </section>
         <Footer />
     </main>
   );

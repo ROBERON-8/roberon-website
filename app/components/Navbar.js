@@ -42,19 +42,6 @@ export default function Navbar() {
     }
     return `${baseClasses} text-gray-300 `;
   }
-  const handleTeams = () => {
-  if (pathname !== "/home") {
-    // Navigate to /home and add a hash for the section
-    router.push("/home#teams");
-  } else {
-    // Already on /home, just scroll to section
-    const el = document.getElementById("teams");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  }
-};
-
   // Mobile button classes
   const getMobileButtonClasses = (route) => {
     if (isActive(route)) {
@@ -82,14 +69,15 @@ export default function Navbar() {
             Home
           </button>
           <button 
-            className="text-gray-300 rounded-full w-24 h-10 cursor-target text-md hover:scale-110 flex items-center justify-center gap-1 transition-all duration-300 ease-in-out" onClick={handleTeams}
+            className={getButtonClasses('/teams', 'h-10 rounded-full cursor-target font-medium w-24 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
+            onClick={() => router.push('/teams')}
           >
             Team
           </button>
         </div>
 
         {/* Center Logo (Desktop) / Right Logo (Mobile) */}
-        <div className="flex justify-center items-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+        <div className="flex justify-center items-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2 cursor-target" onClick={() => router.push('/home')}>
           <img src="../Roberon WHITE SVG.svg" alt="Logo" className="h-8 w-auto" />
         </div>
 
@@ -108,9 +96,15 @@ export default function Navbar() {
           >
             Blogs
           </button>
-          <div className="bg-slate-800 cursor-target w-12 h-10 rounded-full border border-white flex items-center justify-center top-4 right-0 z-50  shadow-lg hover:scale-105 transition-transform" onClick={() => router.push('https://we-gift-3-d.vercel.app/')}>
+          <button 
+            className={getButtonClasses('/contact', 'h-10 rounded-full cursor-target flex items-center justify-center gap-1 w-28 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
+            onClick={() => router.push('/contact')}
+          >
+            Contact Us
+          </button>
+          {/* <div className="bg-slate-800 cursor-target w-12 h-10 rounded-full border border-white flex items-center justify-center top-4 right-0 z-50  shadow-lg hover:scale-105 transition-transform" onClick={() => router.push('https://we-gift-3-d.vercel.app/')}>
             <Image src='/wegift logo.png' alt='WeGift 3D logo' height={100} width={100} className='w-auto h-auto' />
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -128,9 +122,9 @@ export default function Navbar() {
               Home
             </button>
             <button 
-              className="w-full text-left text-white border-b border-gray-600 py-2" 
+              className={getMobileButtonClasses('/teams')}
               onClick={() => {
-                handleTeams();
+                router.push('/teams');
                 setMenuOpen(false);
               }}
             >
@@ -155,6 +149,15 @@ export default function Navbar() {
               Blogs
             </button>
             <button 
+              className={getMobileButtonClasses('/contact')} 
+              onClick={() => {
+                router.push('/contact');
+                setMenuOpen(false);
+              }}
+            >
+              Contact Us
+            </button>
+            {/* <button 
               className='flex items-center justify-start w-full text-left text-white py-2 gap-2' 
               onClick={() => {
                 window.location.href = 'https://we-gift-3-d.vercel.app/';
@@ -164,7 +167,7 @@ export default function Navbar() {
               <Image src='/wegift logo.png' alt='WeGift 3D logo' height={32} width={32} className='w-8 h-8 object-contain' />
               <p className='text-md'>WeGift 3D</p>
               <IoIosArrowRoundForward size={24}/>
-            </button>
+            </button> */}
           </div>
         </div>
       )}

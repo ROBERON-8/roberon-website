@@ -320,7 +320,7 @@ export default function Contact() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-lg filter grayscale hover:grayscale-0 transition-all duration-500"
+                    className="rounded-lg transition-all duration-500"
                   ></iframe>
                   
                   {/* Custom Map Overlay (for styling) */}

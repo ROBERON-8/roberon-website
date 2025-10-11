@@ -147,6 +147,7 @@ const HeroPage = () => {
       }
     }, 800);
   };
+
   return (
     <div 
       className="relative w-full h-screen flex items-center justify-center overflow-hidden"
@@ -183,6 +184,9 @@ const HeroPage = () => {
           />
         </div>
       </div>
+
+      {/* Layer 2.5: Gradient Overlay - transitions image to black at bottom */}
+      <div className="absolute inset-0 z-25 bg-gradient-to-b from-transparent via-transparent to-black"></div>
 
       {/* Layer 3: All other content (drone, text, buttons) - visible above hover effect */}
       <div className="absolute inset-0 z-30">
