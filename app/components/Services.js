@@ -29,7 +29,7 @@ const slides = [
   {
     id: 3,
     slug: "manufacturing-production-services",
-    image: "/images/service3.jpg",
+    image: "/images/service3.jpeg",
     heading: "Manufacturing & Production",
     subheading: "From Idea to Reality, Faster Than Ever",
     description:
@@ -39,7 +39,7 @@ const slides = [
   {
     id: 4,
     slug: "edtech-skill-development-programs",
-    image: "/images/service1.jpg", 
+    image: "/images/service4.jpg", 
     heading: "EdTech & Skill Development",
     subheading: "Shaping Future Innovators",
     description:
@@ -49,7 +49,7 @@ const slides = [
   {
     id: 5,
     slug: "student-project-kits-solutions",
-    image: "/images/service2.jpg",
+    image: "/images/service5.jpeg",
     heading: "Student Project Kits",
     subheading: "Projects Made Simple, Learning Made Fun",
     description:

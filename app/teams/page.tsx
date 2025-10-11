@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import Navbar from "../components/Navbar";
 import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 import Link from "next/link";
-
+import Image from "next/image";
 interface TeamMember {
   id: string;
   name: string;
@@ -33,37 +33,35 @@ const teamMembers: TeamMember[] = [
   {
     id: "member-1",
     name: "Vijaya Vitthal",
-    role: "Lead 3D Designer",
-    image: "/team/alex.jpg",
-    bio: "Passionate about creating innovative 3D designs with 8+ years of experience in additive manufacturing.",
-    skills: ["3D Modeling", "CAD Design", "Prototyping"],
+    role: "Founder",
+    image: "/team/vijay.jpg",
+    bio: "Drone and Robotics Enthusiast driving innovation as a Co-Founder and Technical Innovator, blending creativity with cutting-edge 3D design.",
+    skills: ["Co-Founder", "Technical Innovator", "Drone & Robotics Enthusiast"],
     social: {
-      linkedin: "https://linkedin.com/in/alexrodriguez",
-      instagram: "https://instagram.com/alexrodriguez"
+      linkedin: "https://www.linkedin.com/in/vijayavitthal",
+      instagram: "https://www.instagram.com/vijaya_vitthal_offical/"
     }
   },
   {
     id: "member-2",
     name: "Bharath Kumar S",
-    role: "Manufacturing Engineer",
-    image: "/team/sarah.jpg",
-    bio: "Expert in precision engineering and quality control with a focus on sustainable manufacturing processes.",
-    skills: ["Quality Control", "Process Optimization", "Materials Science"],
+    role: "Founder",
+    image: "/team/bharath.jpeg",
+    bio: "Combining an entrepreneurial mindset with a deep belief in community and innovation to drive purposeful growth and lasting impact.",
+    skills: ["Co-Founder", "Strategic Leader", "Community Connector"],
     social: {
-      linkedin: "https://linkedin.com/in/sarahchen",
-      instagram: "https://instagram.com/sarahchen"
+      linkedin: "www.linkedin.com/in/bharathsbk",
     }
   },
   {
     id: "member-3",
     name: "Vishnu V",
-    role: "Technology Director",
-    image: "/team/david.jpg",
-    bio: "Leading innovation in 3D printing technology and automation with 10+ years in the industry.",
-    skills: ["3D Printing", "Automation", "Innovation"],
+    role: "Founder",
+    image: "/team/vishnu.jpg",
+    bio: "Co-founder and R&D engineer passionate about drones and CubeSAT development, turning cutting-edge ideas into real-world innovations.",
+    skills: ["Co-Founder", "R&D Engineer", " Drone Pilot & CubeSAT Developer"],
     social: {
-      linkedin: "https://linkedin.com/in/davidkumar",
-      instagram: "https://instagram.com/davidkumar"
+      linkedin: "https://www.linkedin.com/in/ftvishnu-v?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     }
   }
 ];
@@ -75,28 +73,28 @@ const interns: Intern[] = [
     designation: "Business Development Intern",
     image: "/team/intern1.jpg",
     social: {
-      linkedin: "https://linkedin.com/in/priyasharma",
-      instagram: "https://instagram.com/priyasharma"
+      linkedin: "https://www.linkedin.com/in/shreya-upadhyay-055367320?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      instagram: "https://www.instagram.com/rudrashankar_0406?igsh=MTZqNzllMThtYnA4eA=="
     }
   },
-  {
-    id: "intern-2",
-    name: "S Nishaanth",
-    designation: "Electronics Engineer Intern",
-    image: "/team/intern2.jpg",
-    social: {
-      linkedin: "https://linkedin.com/in/rahulverma",
-      instagram: "https://instagram.com/rahulverma"
-    }
-  },
+  // {
+  //   id: "intern-2",
+  //   name: "S Nishaanth",
+  //   designation: "Electronics Engineer Intern",
+  //   image: "/team/intern2.jpg",
+  //   social: {
+  //     linkedin: "https://linkedin.com/in/rahulverma",
+  //     instagram: "https://instagram.com/rahulverma"
+  //   }
+  // },
   {
     id: "intern-3",
     name: "Daksha K Gowda",
     designation: "Design Intern",
     image: "/team/intern3.jpg",
     social: {
-      linkedin: "https://linkedin.com/in/ananyareddy",
-      instagram: "https://instagram.com/ananyareddy"
+      linkedin: "linkedin.com/in/dakshakgowda",
+      instagram: "instagram.com/the_red_dk"
     }
   },
   {
@@ -105,8 +103,8 @@ const interns: Intern[] = [
     designation: "Media and Content Creator Intern",
     image: "/team/intern4.jpg",
     social: {
-      linkedin: "https://linkedin.com/in/arjunpatel",
-      instagram: "https://instagram.com/arjunpatel"
+      linkedin: "https://www.linkedin.com/in/sharan-tej-1237b32bb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      instagram: "https://www.instagram.com/sharan_tej07?igsh=aDlyOTBsNDJhcm9x"
     }
   },
   {
@@ -115,8 +113,8 @@ const interns: Intern[] = [
     designation: "Web Developer Intern",
     image: "/team/intern5.jpg",
     social: {
-      linkedin: "https://linkedin.com/in/snehaiyer",
-      instagram: "https://instagram.com/snehaiyer"
+      linkedin: "https://www.linkedin.com/in/anik-tiwary-4a1161292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      instagram: "https://www.instagram.com/anik_tiwary08/"
     }
   },
   {
@@ -125,8 +123,8 @@ const interns: Intern[] = [
     designation: "Social Media Manager Intern",
     image: "/team/intern6.jpg",
     social: {
-      linkedin: "https://linkedin.com/in/karthikmenon",
-      instagram: "https://instagram.com/karthikmenon"
+      linkedin: "https://www.linkedin.com/in/neelakshiyemde",
+      instagram: "https://www.instagram.com/ny._.neelsy"
     }
   },
   {
@@ -135,18 +133,18 @@ const interns: Intern[] = [
     designation: "3D Design Intern",
     image: "/team/intern7.jpg",
     social: {
-      linkedin: "https://linkedin.com/in/karthikmenon",
-      instagram: "https://instagram.com/karthikmenon"
+      linkedin: "https://www.linkedin.com/in/punith-s-484b37323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      instagram: "https://www.instagram.com/punithsuresh18?igsh=MWV0czc0aW90eWUwOQ=="
     }
   },
   {
     id: "intern-8",
     name: "Jaijan S",
     designation: "Operations Intern",
-    image: "/team/intern8.jpg",
+    image: "/team/intern8.jpeg",
     social: {
-      linkedin: "https://linkedin.com/in/karthikmenon",
-      instagram: "https://instagram.com/karthikmenon"
+      linkedin: "https://www.linkedin.com/in/jaijan-s-975210300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      instagram: "https://www.instagram.com/jaijan_jj?igsh=MWZkOGV0bGM4eWNvZA%3D%3D&utm_source=qr"
     }
   }
 ];
@@ -161,7 +159,7 @@ export default function TeamPage() {
     <div className="relative w-full bg-black min-h-screen">
       {/* Hero Section */}
       <Navbar />
-      <section className="relative w-full bg-black pt-32 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* <section className="relative w-full bg-black pt-32 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(239,68,68,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(239,68,68,0.3)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
         </div>
@@ -196,7 +194,7 @@ export default function TeamPage() {
             Meet the talented individuals driving innovation and excellence in 3D printing technology
           </motion.p>
         </div>
-      </section>
+      </section> */}
 
       {/* Core Team Section */}
       <section
@@ -266,9 +264,7 @@ export default function TeamPage() {
                         
                         <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-zinc-700 group-hover:border-red-500/70 transition-all duration-500 shadow-lg shadow-red-500/20">
                           <div className="w-full h-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center">
-                            <svg className="w-14 h-14 text-zinc-600" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                            </svg>
+                          <Image src={member.image} alt={member.name} width={112} height={112} className="object-cover w-full h-full" />
                           </div>
                         </div>
                         
@@ -410,9 +406,7 @@ export default function TeamPage() {
                       
                       <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-zinc-700 group-hover:border-red-500/50 transition-all duration-500">
                         <div className="w-full h-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center">
-                          <svg className="w-10 h-10 text-zinc-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                          </svg>
+                        <Image src={intern.image} alt={intern.name} width={80} height={80} className="object-cover w-full h-full" />
                         </div>
                       </div>
                     </div>
