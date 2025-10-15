@@ -8,9 +8,9 @@ import { useRouter } from "next/navigation";
 const slides = [
   {
     id: 1,
-    slug: "gps-autonomous-drone-technology",
+    slug: "autonomous-drone",
     image: "/images/service1.jpg", 
-    heading: "GPS Autonomous denied drone",
+    heading: " GPS Denied Autonomous Drone",
     subheading: "Redefining the skies with intelligence and precision",
     description:
       "Our team is pushing the boundaries of aerial innovation with autonomous drone technology. From intelligent navigation to vision-based decision-making, we are building systems that think while they fly.",
@@ -18,7 +18,7 @@ const slides = [
   },
   {
     id: 2,
-    slug: "industrial-automation-solutions",
+    slug: "industrial-automation",
     image: "/images/service2.jpg",
     heading: "Industrial Automation",
     subheading: "Engineering Tomorrow's Efficiency",
@@ -28,7 +28,7 @@ const slides = [
   },
   {
     id: 3,
-    slug: "manufacturing-production-services",
+    slug: "manufacturing-production",
     image: "/images/service3.jpeg",
     heading: "Manufacturing & Production",
     subheading: "From Idea to Reality, Faster Than Ever",
@@ -38,7 +38,7 @@ const slides = [
   },
   {
     id: 4,
-    slug: "edtech-skill-development-programs",
+    slug: "skill-development",
     image: "/images/service4.jpg", 
     heading: "EdTech & Skill Development",
     subheading: "Shaping Future Innovators",
@@ -48,9 +48,9 @@ const slides = [
   },
   {
     id: 5,
-    slug: "student-project-kits-solutions",
+    slug: "project-kits",
     image: "/images/service5.jpeg",
-    heading: "Student Project Kits",
+    heading: "Project Kits",
     subheading: "Projects Made Simple, Learning Made Fun",
     description:
       "No more running around for parts or wasting money on extras you don't need. Our all-in-one project kits come complete with the right components, neat 3D enclosures, and easy guides. With manuals, videos, and mentor support — students build with confidence, learn with joy, and create without stress.",

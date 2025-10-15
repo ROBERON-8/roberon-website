@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 import Link from "next/link";
 import Image from "next/image";
+import { IoMailOutline } from "react-icons/io5";
 interface TeamMember {
   id: string;
   name: string;
@@ -15,6 +16,7 @@ interface TeamMember {
   social: {
     linkedin?: string;
     instagram?: string;
+    mail?: string;
   };
 }
 
@@ -26,6 +28,7 @@ interface Intern {
   social: {
     linkedin?: string;
     instagram?: string;
+    
   };
 }
 
@@ -35,22 +38,25 @@ const teamMembers: TeamMember[] = [
     name: "Vijaya Vitthal",
     role: "Founder",
     image: "/team/vijay.jpg",
-    bio: "Drone and Robotics Enthusiast driving innovation as a Co-Founder and Technical Innovator, blending creativity with cutting-edge 3D design.",
-    skills: ["Co-Founder", "Technical Innovator", "Drone & Robotics Enthusiast"],
+    bio: "A visionary technologist leading Roberon's innovations in robotics, drones, and Industry 5.0 automation. Vijay drives product development with hands-on expertise in 3D printing and advanced engineering systems.",
+    skills: ["Robotics Visionary", "Technical Innovator", "Industry 5.0 Visionary"],
     social: {
       linkedin: "https://www.linkedin.com/in/vijayavitthal",
-      instagram: "https://www.instagram.com/vijaya_vitthal_offical/"
+      instagram: "https://www.instagram.com/vijaya_vitthal_offical/",
+      mail: "ceo@roberon.com" 
     }
   },
   {
     id: "member-2",
     name: "Bharath Kumar S",
     role: "Founder",
-    image: "/team/bharath.jpeg",
-    bio: "Combining an entrepreneurial mindset with a deep belief in community and innovation to drive purposeful growth and lasting impact.",
-    skills: ["Co-Founder", "Strategic Leader", "Community Connector"],
+    image: "/team/bharath.jpg",
+    bio: "The strategic mind behind Roberon's growth, finance, and business development. His leadership ensures that innovation aligns with market needs and sustainable expansion.",
+    skills: ["Strategic Thinker", "Community Connector", "Growth Architect"],
     social: {
       linkedin: "www.linkedin.com/in/bharathsbk",
+      // instagram: "https://www.instagram.com/bharath_s_bk/",
+      mail: "sbkbharathkumar03@gmail.com"
     }
   },
   {
@@ -58,10 +64,12 @@ const teamMembers: TeamMember[] = [
     name: "Vishnu V",
     role: "Founder",
     image: "/team/vishnu.jpg",
-    bio: "Co-founder and R&D engineer passionate about drones and CubeSAT development, turning cutting-edge ideas into real-world innovations.",
-    skills: ["Co-Founder", "R&D Engineer", " Drone Pilot & CubeSAT Developer"],
+    bio: "A passionate innovator focused on electronics, drone systems, & satellite technologies. He spearheads Roberon's research initiatives & cutting-edge solutions that bridge science with real-world applications.",
+    skills: ["Research-Driven Creator", "Futuristic Technologist", "Electronics & Drone Specialist"],
     social: {
-      linkedin: "https://www.linkedin.com/in/ftvishnu-v?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+      linkedin: "https://www.linkedin.com/in/ftvishnu-v?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      // instagram: "https://www.instagram.com/ftvishnu_v/?igsh=MWZkOGV0bGM4eWNvZA==",
+      mail: "vishnuvenugopal1978@gmail.com"
     }
   }
 ];
@@ -234,7 +242,7 @@ export default function TeamPage() {
               </span>
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-              A passionate team of innovators dedicated to pushing the boundaries of 3D printing technology
+              A passionate team of innovators dedicated to pushing the boundaries of technology, creativity, and purposeful design.
             </p>
           </motion.div>
 
@@ -325,6 +333,14 @@ export default function TeamPage() {
                         >
                             <FaInstagram className="w-5 h-5" />
                         </Link>
+                      )}
+                      {member.social.mail && (
+                        <a
+                          href={`https://mail.google.com/mail/?view=cm&to=${member.social.mail}`}
+                          className="w-10 h-10 bg-zinc-800/80 hover:bg-red-600 text-zinc-400 hover:text-white rounded-lg flex items-center justify-center transition-all duration-300 border border-zinc-700/50 hover:border-red-500/50 cursor-target hover:shadow-lg hover:shadow-red-500/20"
+                        >
+                            <IoMailOutline className="w-5 h-5" />
+                        </a>
                       )}
                     </div>
                   </div>

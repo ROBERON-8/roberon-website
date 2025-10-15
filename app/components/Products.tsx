@@ -282,8 +282,8 @@ export default function Products() {
         >
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-8 bg-zinc-900/50 backdrop-blur-sm rounded-2xl border border-zinc-800/50">
             <div className="flex-1 text-left">
-              <p className="text-white text-lg font-semibold mb-1">Custom 3D Printing Solutions</p>
-              <p className="text-gray-400 text-sm">Need something unique? We bring your ideas to life</p>
+              <p className="text-white text-lg font-semibold mb-1">Customized drone and robotics for your requirements</p>
+              <p className="text-gray-400 text-sm">Solutions designed to address your specific problems and requirements.</p>
             </div>
             <button className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 hover:scale-105 whitespace-nowrap cursor-target" onClick={() => router.push('/contact')}>
               Request Quote
