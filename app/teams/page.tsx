@@ -99,10 +99,10 @@ const interns: Intern[] = [
     id: "intern-3",
     name: "Daksha K Gowda",
     designation: "Design Intern",
-    image: "/team/intern3.jpg",
+    image: "/team/daksha.jpg",
     social: {
-      linkedin: "linkedin.com/in/dakshakgowda",
-      instagram: "instagram.com/the_red_dk"
+      linkedin: "https://www.linkedin.com/in/dakshakgowda",
+      instagram: "https://www.instagram.com/the_red_dk"
     }
   },
   {
